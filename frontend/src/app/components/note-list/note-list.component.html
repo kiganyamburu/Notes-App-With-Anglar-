@@ -1,0 +1,8 @@
+<div *ngFor="let note of notes">
+  <mat-card>
+    <mat-card-title>{{ note.title }}</mat-card-title>
+    <mat-card-content>{{ note.content }}</mat-card-content>
+    <button mat-button (click)="editNote(note.id)">Edit</button>
+    <button mat-button (click)="deleteNote(note.id)">Delete</button>
+  </mat-card>
+</div>

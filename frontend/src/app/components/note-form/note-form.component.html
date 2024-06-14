@@ -1,0 +1,15 @@
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Title" formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Content"
+      formControlName="content"
+    ></textarea>
+  </mat-form-field>
+  <button mat-button type="submit">
+    {{ isEditMode ? "Update" : "Create" }} Note
+  </button>
+</form>
