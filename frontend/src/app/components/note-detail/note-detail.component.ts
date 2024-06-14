@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note.service';
 import { Note } from '../../models/note.model';
 
@@ -13,7 +13,8 @@ export class NoteDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private noteService: NoteService
+    private noteService: NoteService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -21,5 +22,13 @@ export class NoteDetailComponent implements OnInit {
     this.noteService.getNoteById(id).subscribe((data) => {
       this.note = data;
     });
+  }
+
+  deleteNote(): void {
+    if (this.note) {
+      this.noteService.deleteNote(this.note.id).subscribe(() => {
+        this.router.navigate(['/']);
+      });
+    }
   }
 }
