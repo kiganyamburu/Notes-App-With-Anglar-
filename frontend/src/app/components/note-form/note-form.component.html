@@ -1,15 +1,23 @@
 <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
-  <mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
     <input matInput placeholder="Title" formControlName="title" />
+    <mat-error *ngIf="noteForm.get('title')?.invalid"
+      >Title is required</mat-error
+    >
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Content</mat-label>
     <textarea
       matInput
       placeholder="Content"
       formControlName="content"
     ></textarea>
+    <mat-error *ngIf="noteForm.get('content')?.invalid"
+      >Content is required</mat-error
+    >
   </mat-form-field>
-  <button mat-button type="submit">
+  <button mat-raised-button color="primary" type="submit">
     {{ isEditMode ? "Update" : "Create" }} Note
   </button>
 </form>
